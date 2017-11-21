@@ -13,6 +13,7 @@ import java.util.List;
  */
 
 public class DevicesRepository {
+    // Context can be used to manage db operations, etc.
     private Context mCtx;
     private List<Device> mData;
 
