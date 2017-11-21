@@ -91,7 +91,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         return true;
     }
 
-    class DeviceHolderNotEmpty extends RecyclerView.ViewHolder {
+    public class DeviceHolderNotEmpty extends RecyclerView.ViewHolder {
         private TextView mPortNumberTextView;
         private TextView mNameTextView;
         private ImageView mPictureImageView;
@@ -109,7 +109,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mPictureImageView.setImageResource(device.getPicturePath());
         }
     }
-    class DeviceHolderEmpty extends RecyclerView.ViewHolder {
+    public class DeviceHolderEmpty extends RecyclerView.ViewHolder {
 
         public DeviceHolderEmpty(View itemView) {
             super(itemView);
