@@ -9,15 +9,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sgubar.draggableview.entities.Device;
+import com.example.sgubar.draggableview.interfaces.ItemTouchHelperAdapter;
 import com.example.sgubar.draggableview.repositoires.DevicesRepository;
 
+import java.util.Collections;
 import java.util.List;
 
 /**
  * Created by sgubar on 11/21/17.
  */
 
-public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
+        ItemTouchHelperAdapter {
 
     private DevicesRepository mDevicesRepository;
     private List<Device> mData;
@@ -71,6 +74,21 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    @Override
+    public boolean onItemMove(int startPosition, int endPosition) {
+        if (startPosition < endPosition) {
+            for (int i = startPosition; i < endPosition; i++) {
+                Collections.swap(mData, i, i + 1);
+            }
+        } else {
+            for (int i = startPosition; i > endPosition; i--) {
+                Collections.swap(mData, i, i - 1);
+            }
+        }
+        notifyItemMoved(startPosition, endPosition);
+        return true;
     }
 
     class DeviceHolderNotEmpty extends RecyclerView.ViewHolder {
