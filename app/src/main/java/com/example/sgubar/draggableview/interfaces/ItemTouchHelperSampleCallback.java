@@ -23,7 +23,12 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
     public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
         int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
-        return makeMovementFlags(dragFlags, swipeFlags);
+
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY) {
+            return 0;
+        } else {
+            return makeMovementFlags(dragFlags, swipeFlags);
+        }
     }
 
     // Nope, we're not swapping :)
@@ -44,7 +49,7 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        if (viewHolder instanceof DevicesRecyclerAdapter.DeviceHolderEmpty) {
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY) {
             return false;
         } else {
             mAdapter.onItemMove(viewHolder.getAdapterPosition(),

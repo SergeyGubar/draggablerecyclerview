@@ -25,8 +25,8 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     private DevicesRepository mDevicesRepository;
     private List<Device> mData;
     private LayoutInflater mLayoutInflater;
-    private static final int TYPE_NOT_EMPTY = 1;
-    private static final int TYPE_EMPTY = 0;
+    public static final int TYPE_NOT_EMPTY = 1;
+    public static final int TYPE_EMPTY = 0;
 
     public DevicesRecyclerAdapter(Context ctx) {
         mDevicesRepository = new DevicesRepository(ctx);
@@ -115,6 +115,8 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             super(itemView);
             //TODO : Add some logic here, etc change port number
         }
+
+
     }
 
 }
