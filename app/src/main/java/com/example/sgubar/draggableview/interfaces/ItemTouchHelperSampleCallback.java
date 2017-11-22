@@ -24,11 +24,10 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
         int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
 
-        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY ||
-                viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_TRANSFORMER) {
-            return 0;
-        } else {
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_NOT_EMPTY) {
             return makeMovementFlags(dragFlags, swipeFlags);
+        } else {
+            return 0;
         }
     }
 

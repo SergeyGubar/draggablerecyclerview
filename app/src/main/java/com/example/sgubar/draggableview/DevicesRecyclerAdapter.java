@@ -24,7 +24,6 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ItemTouchHelperAdapter {
 
     private DevicesRepository mDevicesRepository;
-
     private List<Device> mData;
     private LayoutInflater mLayoutInflater;
     public static final int TYPE_NOT_EMPTY = 1;
@@ -39,7 +38,6 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         switch (viewType) {
             case TYPE_NOT_EMPTY:
                 View notEmptyView = mLayoutInflater.inflate(R.layout.device_not_empty_item, parent, false);
@@ -59,20 +57,20 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         switch (holder.getItemViewType()) {
             case TYPE_NOT_EMPTY:
                 DeviceHolderNotEmpty notEmptyHolder = (DeviceHolderNotEmpty) holder;
-                notEmptyHolder.bind(mData.get(position));
+                notEmptyHolder.bind(position);
                 break;
             case TYPE_EMPTY:
-                DeviceHolderEmpty holderEmpty = (DeviceHolderEmpty) holder;
-                // TODO : Some bind here
+                DeviceHolderEmpty emptyHolder = (DeviceHolderEmpty) holder;
+                emptyHolder.bind(position);
                 break;
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        // TODO: That's not okay
         if (mData.get(position) == null) {
             return TYPE_EMPTY;
+            // TODO: That's not okay
         } else if (mData.get(position) instanceof Transformer) {
             return TYPE_TRANSFORMER;
         } else {
@@ -112,18 +110,25 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mPictureImageView = itemView.findViewById(R.id.device_picture_image_view);
         }
 
-        public void bind(Device device) {
-            mPortNumberTextView.setText(String.valueOf(device.getPortNumber()));
+        public void bind(int position) {
+            Device device = mData.get(position);
+            mPortNumberTextView.setText(String.valueOf(position));
             mNameTextView.setText(device.getDeviceName());
             mPictureImageView.setImageResource(device.getPicturePath());
         }
     }
 
     public class DeviceHolderEmpty extends RecyclerView.ViewHolder {
+        private TextView mPortNumberTextView;
 
         public DeviceHolderEmpty(View itemView) {
             super(itemView);
+            mPortNumberTextView = itemView.findViewById(R.id.device_port_number_text_view);
             //TODO : Add some logic here, etc change port number
+        }
+
+        public void bind(int portNumber) {
+            mPortNumberTextView.setText(String.valueOf(portNumber));
         }
 
     }

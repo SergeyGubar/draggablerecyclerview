@@ -7,12 +7,10 @@ package com.example.sgubar.draggableview.entities;
 public class Device {
     private int mPicturePath;
     private String mDeviceName;
-    private int mPortNumber;
 
-    public Device(int picturePath, String deviceName, int portNumber) {
+    public Device(int picturePath, String deviceName) {
         mPicturePath = picturePath;
         mDeviceName = deviceName;
-        mPortNumber = portNumber;
     }
 
     public int getPicturePath() {
@@ -23,7 +21,5 @@ public class Device {
         return mDeviceName;
     }
 
-    public int getPortNumber() {
-        return mPortNumber;
-    }
+
 }
