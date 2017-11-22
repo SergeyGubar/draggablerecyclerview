@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/device_item_height"
+    android:layout_height="@dimen/hub_height"
     android:orientation="horizontal"
     android:padding="8dp">
 
@@ -10,11 +12,10 @@
         android:id="@+id/device_picture_image_view"
         android:layout_width="64dp"
         android:layout_height="match_parent"
-        android:src="@color/colorPrimaryDark" />
+        android:src="@color/colorAccent" />
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="16dp"
         android:orientation="vertical">
@@ -22,20 +23,18 @@
         <TextView
             android:id="@+id/device_name_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="bottom"
-            tools:text="Empty" />
+            tools:text="ToP name 001" />
 
         <TextView
             android:id="@+id/device_model_text_view"
             android:layout_width="wrap_content"
-            android:layout_height="28dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:gravity="top"
-            tools:text="Empty" />
+            tools:text="Transformer 10 533" />
     </LinearLayout>
-    <Button
-        android:id="@+id/add_device_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/add_device"/>
+
 </LinearLayout>
