@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.sgubar.draggableview.R;
 import com.example.sgubar.draggableview.entities.Device;
+import com.example.sgubar.draggableview.entities.Transformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class DevicesRepository {
     public DevicesRepository(Context ctx) {
         mCtx = ctx;
         mData = new ArrayList<>();
+        mData.add(new Transformer(android.R.color.darker_gray, "Transformer1337", 0));
         mData.add(new Device(R.drawable.ic_launcher_background, "Oak light 01", 1));
         mData.add(new Device(R.drawable.ic_launcher_background, "Luminaire", 2));
         mData.add(null);

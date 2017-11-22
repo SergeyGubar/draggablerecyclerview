@@ -24,7 +24,8 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
         int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
         int swipeFlags = ItemTouchHelper.START | ItemTouchHelper.END;
 
-        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY) {
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY ||
+                viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_TRANSFORMER) {
             return 0;
         } else {
             return makeMovementFlags(dragFlags, swipeFlags);
@@ -49,7 +50,8 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY) {
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY
+                || target.getItemViewType() == DevicesRecyclerAdapter.TYPE_TRANSFORMER) {
             return false;
         } else {
             mAdapter.onItemMove(viewHolder.getAdapterPosition(),

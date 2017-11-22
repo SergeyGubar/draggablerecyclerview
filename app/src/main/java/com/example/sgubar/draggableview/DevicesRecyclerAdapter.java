@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.sgubar.draggableview.entities.Device;
+import com.example.sgubar.draggableview.entities.Transformer;
 import com.example.sgubar.draggableview.interfaces.ItemTouchHelperAdapter;
 import com.example.sgubar.draggableview.repositoires.DevicesRepository;
 
@@ -23,10 +24,12 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         ItemTouchHelperAdapter {
 
     private DevicesRepository mDevicesRepository;
+
     private List<Device> mData;
     private LayoutInflater mLayoutInflater;
     public static final int TYPE_NOT_EMPTY = 1;
     public static final int TYPE_EMPTY = 0;
+    public static final int TYPE_TRANSFORMER = 2;
 
     public DevicesRecyclerAdapter(Context ctx) {
         mDevicesRepository = new DevicesRepository(ctx);
@@ -41,6 +44,9 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             case TYPE_NOT_EMPTY:
                 View notEmptyView = mLayoutInflater.inflate(R.layout.device_not_empty_item, parent, false);
                 return new DeviceHolderNotEmpty(notEmptyView);
+            case TYPE_TRANSFORMER:
+                View transformerView = mLayoutInflater.inflate(R.layout.device_transformer, parent, false);
+                return new TransformerHolder(transformerView);
             default:
                 View emptyView = mLayoutInflater.inflate(R.layout.device_empty_item, parent, false);
                 return new DeviceHolderEmpty(emptyView);
@@ -64,8 +70,11 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemViewType(int position) {
+        // TODO: That's not okay
         if (mData.get(position) == null) {
             return TYPE_EMPTY;
+        } else if (mData.get(position) instanceof Transformer) {
+            return TYPE_TRANSFORMER;
         } else {
             return TYPE_NOT_EMPTY;
         }
@@ -109,6 +118,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mPictureImageView.setImageResource(device.getPicturePath());
         }
     }
+
     public class DeviceHolderEmpty extends RecyclerView.ViewHolder {
 
         public DeviceHolderEmpty(View itemView) {
@@ -116,7 +126,13 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             //TODO : Add some logic here, etc change port number
         }
 
+    }
 
+    public class TransformerHolder extends RecyclerView.ViewHolder {
+
+        public TransformerHolder(View itemView) {
+            super(itemView);
+        }
     }
 
 }
