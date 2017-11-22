@@ -8,7 +8,14 @@ import java.util.List;
 
 public class Transformer  extends Device {
 
-    public Transformer(int picturePath, String deviceName) {
+    private String mModel;
+
+    public Transformer(int picturePath, String deviceName, String model) {
         super(picturePath, deviceName);
+        mModel = model;
+    }
+
+    public String getModel() {
+        return mModel;
     }
 }

@@ -5,16 +5,16 @@ package com.example.sgubar.draggableview.entities;
  */
 
 public class Device {
-    private int mPicturePath;
+    private int mImagePath;
     private String mDeviceName;
 
-    public Device(int picturePath, String deviceName) {
-        mPicturePath = picturePath;
+    public Device(int imagePath, String deviceName) {
+        mImagePath = imagePath;
         mDeviceName = deviceName;
     }
 
-    public int getPicturePath() {
-        return mPicturePath;
+    public int getImagePath() {
+        return mImagePath;
     }
 
     public String getDeviceName() {
