@@ -1,16 +1,25 @@
 package com.example.sgubar.draggableview.model;
 
+import java.util.List;
+
 /**
  * Created by sgubar on 11/24/17.
  */
 
-public class Hub {
-    private static final Hub ourInstance = new Hub();
-
-    public static Hub getInstance() {
-        return ourInstance;
+public abstract class Hub extends Device {
+    private List<Device> mDevices;
+    private String mModel;
+    public Hub(int imagePath, String deviceName, String model, List<Device> devices) {
+        super(imagePath, deviceName);
+        mDevices = devices;
+        mModel = model;
     }
 
-    private Hub() {
+    public List<Device> getDevices() {
+        return mDevices;
+    }
+
+    public String getModel() {
+        return mModel;
     }
 }
