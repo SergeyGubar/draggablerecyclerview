@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.SimpleItemAnimator
 import android.support.v7.widget.helper.ItemTouchHelper
 import com.example.sgubar.draggableview.interfaces.ItemTouchHelperSampleCallback
 import com.example.sgubar.draggableview.model.Hub
@@ -18,7 +19,6 @@ class HubActivity : AppCompatActivity() {
         setContentView(R.layout.activity_hub)
         val repository = DevicesRepository(this)
         setupHub(repository.hub)
-
     }
 
     private fun setupHub(hub: Hub) {
@@ -30,6 +30,7 @@ class HubActivity : AppCompatActivity() {
         val helperCallback: ItemTouchHelper.Callback = ItemTouchHelperSampleCallback(adapter)
         val touchHelper = ItemTouchHelper(helperCallback)
         touchHelper.attachToRecyclerView(devices_recycler_view)
+        (devices_recycler_view.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         devices_recycler_view.adapter = adapter
         devices_recycler_view.layoutManager = layoutManager
     }

@@ -89,62 +89,17 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public boolean onItemMove(int startPosition, int endPosition) {
-//        if (startPosition < endPosition) {
-//            for (int i = startPosition; i < endPosition; i++) {
-//                Collections.swap(mData, i, i + 1);
-//            }
-//        } else {
-//            for (int i = startPosition; i > endPosition; i--) {
-//                Collections.swap(mData, i, i - 1);
-//            }
-//        }
-
-
-//        notifyItemMoved(endPosition, startPosition);
-
         Collections.swap(mData, startPosition, endPosition);
         notifyItemMoved(startPosition, endPosition);
         notifyItemChanged(startPosition);
         notifyItemChanged(endPosition);
-
-//        Device d = mData.get(startPosition);
-//        Device d1 = mData.get(endPosition);
-//        mData.set(startPosition, d1);
-//        mData.set(endPosition, d);
-//
-//        notifyItemMoved(startPosition, endPosition);
-//        notifyItemChanged(startPosition);
-//        notifyItemChanged(endPosition);
-//
-//        Log.d(TAG, "onItemMove: ");
-//        Log.d(TAG, "Start position: " + startPosition + "End position" + endPosition);
-
-//        notifyItemMoved(startPosition, endPosition);
-
-
-//
-//        Handler handler = new Handler();
-//
-//        notifyItemRemoved(endPosition);
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                notifyItemChanged(endPosition);
-//            }
-//        }, 500);
-//        notifyDataSetChanged();
-//        notifyItemChanged(startPosition);
-//        notifyItemChanged(endPosition);
-//        if (startPosition == endPosition) {
-//
-//        } else {
-//            notifyItemChanged(startPosition);
-//            notifyItemChanged(endPosition);
-//        }
         return true;
     }
 
 
+    /**
+     * Holder for not empty port displaying some device
+     */
 
     public class DeviceHolderNotEmpty extends RecyclerView.ViewHolder {
         private TextView mPortNumberTextView;
@@ -159,7 +114,6 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(int position) {
-            Log.d(TAG, "bind: NotEmpty" + this);
             Device device = mData.get(position);
             mPortNumberTextView.setText(String.valueOf(position + 1));
             mNameTextView.setText(device.getDeviceName());
@@ -167,11 +121,14 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
     }
 
+    /**
+     * Holder for the empty port (if device is null)
+     */
+
     public class DeviceHolderEmpty extends RecyclerView.ViewHolder {
 
         private TextView mPortNumberTextView;
         private Button mAddDeviceButton;
-
 
         public DeviceHolderEmpty(View itemView) {
             super(itemView);
@@ -187,7 +144,6 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(int position) {
-            Log.d(TAG, "bind: EmptyBind" + this);
             mPortNumberTextView.setText(String.valueOf(position + 1));
         }
 

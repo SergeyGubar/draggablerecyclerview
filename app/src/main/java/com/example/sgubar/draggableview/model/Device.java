@@ -5,7 +5,9 @@ package com.example.sgubar.draggableview.model;
  */
 
 public abstract class Device {
+
     private int mImagePath;
+
     private String mDeviceName;
 
     public Device(int imagePath, String deviceName) {

@@ -7,8 +7,11 @@ import java.util.List;
  */
 
 public abstract class Hub extends Device {
+
     private List<Device> mDevices;
+
     private String mModel;
+
     public Hub(int imagePath, String deviceName, String model, List<Device> devices) {
         super(imagePath, deviceName);
         mDevices = devices;
