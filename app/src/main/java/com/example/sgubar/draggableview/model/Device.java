@@ -1,11 +1,13 @@
-package com.example.sgubar.draggableview.entities;
+package com.example.sgubar.draggableview.model;
 
 /**
  * Created by sgubar on 11/21/17.
  */
 
-public class Device {
+public abstract class Device {
+
     private int mImagePath;
+
     private String mDeviceName;
 
     public Device(int imagePath, String deviceName) {

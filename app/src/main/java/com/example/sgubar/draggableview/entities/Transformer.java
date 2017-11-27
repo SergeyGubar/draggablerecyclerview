@@ -1,6 +1,6 @@
 package com.example.sgubar.draggableview.entities;
 
-import java.util.List;
+import com.example.sgubar.draggableview.model.Device;
 
 /**
  * Created by sgubar on 11/22/17.
