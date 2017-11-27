@@ -49,8 +49,7 @@ public class ItemTouchHelperSampleCallback extends ItemTouchHelper.Callback{
 
     @Override
     public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY
-                || target.getItemViewType() == DevicesRecyclerAdapter.TYPE_TRANSFORMER) {
+        if (viewHolder.getItemViewType() == DevicesRecyclerAdapter.TYPE_EMPTY) {
             return false;
         } else {
             mAdapter.onItemMove(viewHolder.getAdapterPosition(),

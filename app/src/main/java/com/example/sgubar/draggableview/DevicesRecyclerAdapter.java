@@ -1,7 +1,10 @@
 package com.example.sgubar.draggableview;
 
+import android.content.ClipData;
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +20,7 @@ import com.example.sgubar.draggableview.model.TestDevice;
 import com.example.sgubar.draggableview.model.TestHub;
 import com.example.sgubar.draggableview.repositoires.DevicesRepository;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +30,7 @@ import java.util.List;
 
 public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
         ItemTouchHelperAdapter {
-
+    private static final String TAG = "DevicesRecyclerAdapter";
     private Hub mHub;
     private List<Device> mData;
     private LayoutInflater mLayoutInflater;
@@ -41,6 +45,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Log.d(TAG, "onCreateViewHolder: ");
         switch (viewType) {
             case TYPE_NOT_EMPTY:
                 View notEmptyView = mLayoutInflater.inflate(R.layout.device_not_empty_item, parent, false);
@@ -54,6 +59,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Log.d(TAG, "onBindViewHolder: ");
         switch (holder.getItemViewType()) {
             case TYPE_NOT_EMPTY:
                 DeviceHolderNotEmpty notEmptyHolder = (DeviceHolderNotEmpty) holder;
@@ -64,6 +70,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
                 emptyHolder.bind(position);
                 break;
         }
+
     }
 
     @Override
@@ -82,20 +89,62 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public boolean onItemMove(int startPosition, int endPosition) {
-        if (startPosition < endPosition) {
-            for (int i = startPosition; i < endPosition; i++) {
-                Collections.swap(mData, i, i + 1);
-            }
-        } else {
-            for (int i = startPosition; i > endPosition; i--) {
-                Collections.swap(mData, i, i - 1);
-            }
-        }
+//        if (startPosition < endPosition) {
+//            for (int i = startPosition; i < endPosition; i++) {
+//                Collections.swap(mData, i, i + 1);
+//            }
+//        } else {
+//            for (int i = startPosition; i > endPosition; i--) {
+//                Collections.swap(mData, i, i - 1);
+//            }
+//        }
+
+
+//        notifyItemMoved(endPosition, startPosition);
+
+        Collections.swap(mData, startPosition, endPosition);
+        notifyItemMoved(startPosition, endPosition);
         notifyItemChanged(startPosition);
         notifyItemChanged(endPosition);
-        notifyItemMoved(startPosition, endPosition);
+
+//        Device d = mData.get(startPosition);
+//        Device d1 = mData.get(endPosition);
+//        mData.set(startPosition, d1);
+//        mData.set(endPosition, d);
+//
+//        notifyItemMoved(startPosition, endPosition);
+//        notifyItemChanged(startPosition);
+//        notifyItemChanged(endPosition);
+//
+//        Log.d(TAG, "onItemMove: ");
+//        Log.d(TAG, "Start position: " + startPosition + "End position" + endPosition);
+
+//        notifyItemMoved(startPosition, endPosition);
+
+
+//
+//        Handler handler = new Handler();
+//
+//        notifyItemRemoved(endPosition);
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                notifyItemChanged(endPosition);
+//            }
+//        }, 500);
+//        notifyDataSetChanged();
+//        notifyItemChanged(startPosition);
+//        notifyItemChanged(endPosition);
+//        if (startPosition == endPosition) {
+//
+//        } else {
+//            notifyItemChanged(startPosition);
+//            notifyItemChanged(endPosition);
+//        }
         return true;
     }
+
+
 
     public class DeviceHolderNotEmpty extends RecyclerView.ViewHolder {
         private TextView mPortNumberTextView;
@@ -110,6 +159,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(int position) {
+            Log.d(TAG, "bind: NotEmpty" + this);
             Device device = mData.get(position);
             mPortNumberTextView.setText(String.valueOf(position + 1));
             mNameTextView.setText(device.getDeviceName());
@@ -137,6 +187,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         }
 
         public void bind(int position) {
+            Log.d(TAG, "bind: EmptyBind" + this);
             mPortNumberTextView.setText(String.valueOf(position + 1));
         }
 
