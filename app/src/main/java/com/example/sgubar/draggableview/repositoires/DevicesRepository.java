@@ -3,7 +3,11 @@ package com.example.sgubar.draggableview.repositoires;
 import android.content.Context;
 
 import com.example.sgubar.draggableview.R;
-import com.example.sgubar.draggableview.entities.Device;
+import com.example.sgubar.draggableview.model.Device;
+import com.example.sgubar.draggableview.entities.Transformer;
+import com.example.sgubar.draggableview.model.Hub;
+import com.example.sgubar.draggableview.model.TestDevice;
+import com.example.sgubar.draggableview.model.TestHub;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,20 +17,17 @@ import java.util.List;
  */
 
 public class DevicesRepository {
-    private Context mCtx;
-    private List<Device> mData;
 
-    public DevicesRepository(Context ctx) {
-        mCtx = ctx;
-        mData = new ArrayList<>();
-        mData.add(new Device(R.drawable.ic_launcher_background, "Oak light 01", 1));
-        mData.add(new Device(R.drawable.ic_launcher_background, "Luminaire", 2));
-        mData.add(null);
-        mData.add(null);
-        mData.add(new Device(R.drawable.ic_launcher_foreground, "NotEmpty", 3));
-    }
+    public Hub getHub() {
+        ArrayList<Device> data = new ArrayList<>();
 
-    public List<Device> getDevices() {
-        return mData;
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "Oak light 01"));
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "Luminaire"));
+        data.add(null);
+        data.add(null);
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "NotEmpty"));
+
+        return new TestHub(android.R.color.darker_gray, "ToP Name 101",
+                "Transformer 10 533", data);
     }
 }
