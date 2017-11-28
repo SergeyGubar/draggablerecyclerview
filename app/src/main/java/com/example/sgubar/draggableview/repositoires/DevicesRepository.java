@@ -17,27 +17,17 @@ import java.util.List;
  */
 
 public class DevicesRepository {
-    // Context can be used to manage db operations, etc.
-    private Context mCtx;
-    private Hub mHub;
-
-    public DevicesRepository(Context ctx) {
-        mCtx = ctx;
-
-        ArrayList<Device> mData = new ArrayList<>();
-
-        mData.add(new TestDevice(R.drawable.ic_launcher_background, "Oak light 01"));
-        mData.add(new TestDevice(R.drawable.ic_launcher_background, "Luminaire"));
-        mData.add(null);
-        mData.add(null);
-        mData.add(new TestDevice(R.drawable.ic_launcher_background, "NotEmpty"));
-
-        mHub = new TestHub(android.R.color.darker_gray, "ToP Name 101",
-                "Transformer 10 533", mData);
-
-    }
 
     public Hub getHub() {
-        return mHub;
+        ArrayList<Device> data = new ArrayList<>();
+
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "Oak light 01"));
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "Luminaire"));
+        data.add(null);
+        data.add(null);
+        data.add(new TestDevice(R.drawable.ic_launcher_background, "NotEmpty"));
+
+        return new TestHub(android.R.color.darker_gray, "ToP Name 101",
+                "Transformer 10 533", data);
     }
 }

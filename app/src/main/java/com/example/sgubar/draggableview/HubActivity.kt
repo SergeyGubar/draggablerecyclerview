@@ -17,7 +17,7 @@ class HubActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_hub)
-        val repository = DevicesRepository(this)
+        val repository = DevicesRepository()
         setupHub(repository.hub)
     }
 
