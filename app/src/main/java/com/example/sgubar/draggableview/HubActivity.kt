@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SimpleItemAnimator
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.widget.Toast
 import com.example.sgubar.draggableview.interfaces.ItemTouchHelperSampleCallback
 import com.example.sgubar.draggableview.model.Hub
 import com.example.sgubar.draggableview.repositoires.DevicesRepository
@@ -19,6 +20,10 @@ class HubActivity : AppCompatActivity() {
         setContentView(R.layout.activity_hub)
         val repository = DevicesRepository()
         setupHub(repository.hub)
+
+        fab.setOnClickListener {
+            Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setupHub(hub: Hub) {

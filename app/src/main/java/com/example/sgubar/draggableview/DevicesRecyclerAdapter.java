@@ -31,15 +31,13 @@ import java.util.List;
 public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements
         ItemTouchHelperAdapter {
     private static final String TAG = "DevicesRecyclerAdapter";
-    private Hub mHub;
     private List<Device> mData;
     private LayoutInflater mLayoutInflater;
     public static final int TYPE_NOT_EMPTY = 1;
     public static final int TYPE_EMPTY = 0;
 
     public DevicesRecyclerAdapter(Context ctx, Hub hub) {
-        mHub = hub;
-        mData = mHub.getDevices();
+        mData = hub.getDevices();
         mLayoutInflater = LayoutInflater.from(ctx);
     }
 
