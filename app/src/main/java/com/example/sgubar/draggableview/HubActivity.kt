@@ -1,8 +1,7 @@
 package com.example.sgubar.draggableview
 
-import android.content.res.Resources
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.SimpleItemAnimator
 import android.support.v7.widget.helper.ItemTouchHelper
@@ -24,6 +23,7 @@ class HubActivity : AppCompatActivity() {
         fab.setOnClickListener {
             Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
         }
+
     }
 
     private fun setupHub(hub: Hub) {
