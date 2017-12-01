@@ -1,4 +1,4 @@
-package com.example.sgubar.draggableview.interfaces;
+package com.example.sgubar.draggableview.adapters;
 
 /**
  * Created by sgubar on 11/21/17.
