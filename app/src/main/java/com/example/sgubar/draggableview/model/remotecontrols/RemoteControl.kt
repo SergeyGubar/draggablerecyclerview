@@ -1,4 +1,4 @@
-package com.example.sgubar.draggableview.model.modelUpdated.remotecontrols
+package com.example.sgubar.draggableview.model.remotecontrols
 
 import com.example.sgubar.draggableview.model.modelInterfaces.BegaDevice
 import com.example.sgubar.draggableview.model.modelInterfaces.ZigBeeDevice

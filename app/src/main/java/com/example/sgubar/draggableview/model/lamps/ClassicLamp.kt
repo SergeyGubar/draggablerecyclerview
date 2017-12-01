@@ -1,7 +1,6 @@
-package com.example.sgubar.draggableview.model.modelUpdated.lamps
+package com.example.sgubar.draggableview.model.lamps
 
 import com.example.sgubar.draggableview.model.modelInterfaces.BegaDevice
-import com.example.sgubar.draggableview.model.modelUpdated.lamps.Lamp
 
 /**
  * Created by sgubar on 12/1/17.

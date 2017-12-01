@@ -1,8 +1,7 @@
-package com.example.sgubar.draggableview.model.modelUpdated.abstracions
+package com.example.sgubar.draggableview.model.abstracions
 
 import android.graphics.Color
-import com.example.sgubar.draggableview.model.modelUpdated.abstracions.Group
-import com.example.sgubar.draggableview.model.modelUpdated.lamps.Lamp
+import com.example.sgubar.draggableview.model.lamps.Lamp
 
 /**
  * Created by sgubar on 12/1/17.

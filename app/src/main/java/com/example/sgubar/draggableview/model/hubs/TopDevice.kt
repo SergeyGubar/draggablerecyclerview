@@ -1,4 +1,4 @@
-package com.example.sgubar.draggableview.model.modelUpdated.hubs
+package com.example.sgubar.draggableview.model.hubs
 
 import com.example.sgubar.draggableview.model.modelInterfaces.ZigBeeDevice
 import com.example.sgubar.draggableview.model.abstracions.Device

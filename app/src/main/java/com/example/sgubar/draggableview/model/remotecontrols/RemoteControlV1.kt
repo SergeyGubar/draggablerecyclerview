@@ -1,6 +1,7 @@
-package com.example.sgubar.draggableview.model.modelUpdated.remotecontrols
+package com.example.sgubar.draggableview.model.remotecontrols
 
 import com.example.sgubar.draggableview.model.abstracions.Action
+import com.example.sgubar.draggableview.model.remotecontrols.RemoteControl
 
 /**
  * Created by sgubar on 12/1/17.
