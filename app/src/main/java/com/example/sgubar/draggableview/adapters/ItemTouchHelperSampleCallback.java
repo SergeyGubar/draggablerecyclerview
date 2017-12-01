@@ -1,9 +1,10 @@
-package com.example.sgubar.draggableview.interfaces;
+package com.example.sgubar.draggableview.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 
-import com.example.sgubar.draggableview.DevicesRecyclerAdapter;
+import com.example.sgubar.draggableview.adapters.DevicesRecyclerAdapter;
+import com.example.sgubar.draggableview.adapters.ItemTouchHelperAdapter;
 
 /**
  * Created by sgubar on 11/21/17.

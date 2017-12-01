@@ -1,8 +1,6 @@
-package com.example.sgubar.draggableview;
+package com.example.sgubar.draggableview.adapters;
 
-import android.content.ClipData;
 import android.content.Context;
-import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,15 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.sgubar.draggableview.model.Device;
-import com.example.sgubar.draggableview.entities.Transformer;
-import com.example.sgubar.draggableview.interfaces.ItemTouchHelperAdapter;
-import com.example.sgubar.draggableview.model.Hub;
-import com.example.sgubar.draggableview.model.TestDevice;
-import com.example.sgubar.draggableview.model.TestHub;
-import com.example.sgubar.draggableview.repositoires.DevicesRepository;
+import com.example.sgubar.draggableview.R;
+import com.example.sgubar.draggableview.model.abstracions.Device;
+import com.example.sgubar.draggableview.model.hubs.DeviceHub;
+import com.example.sgubar.draggableview.model.lamps.SmartLamp;
 
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,7 +30,7 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     public static final int TYPE_NOT_EMPTY = 1;
     public static final int TYPE_EMPTY = 0;
 
-    public DevicesRecyclerAdapter(Context ctx, Hub hub) {
+    public DevicesRecyclerAdapter(Context ctx, DeviceHub hub) {
         mData = hub.getDevices();
         mLayoutInflater = LayoutInflater.from(ctx);
     }
@@ -114,8 +108,8 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         public void bind(int position) {
             Device device = mData.get(position);
             mPortNumberTextView.setText(String.valueOf(position + 1));
-            mNameTextView.setText(device.getDeviceName());
-            mPictureImageView.setImageResource(device.getImagePath());
+            mNameTextView.setText(device.getName());
+            mPictureImageView.setImageResource(device.getImageId());
         }
     }
 
@@ -135,7 +129,12 @@ public class DevicesRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.Vi
             mAddDeviceButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mData.set(getAdapterPosition(), new TestDevice(R.drawable.ic_launcher_background, "Test"));
+                    mData.set(getAdapterPosition(), new SmartLamp("MyLamp", R.drawable.ic_launcher_foreground,
+                            "identifier",
+                            100,
+                            "macAddress",
+                            "installCode",
+                            "Color"));
                     notifyItemChanged(getAdapterPosition());
                 }
             });
